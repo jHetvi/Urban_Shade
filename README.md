@@ -1,6 +1,6 @@
 # urban_shade
 
-A new Flutter project.
+A new Flutter project for Fashion Designers Contact me personaly for more details and full app demo.
 
 ## Getting Started
 

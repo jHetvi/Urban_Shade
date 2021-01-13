@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:urban_shade/HomeScreen/HomeScreen.dart';
+import 'package:urban_shade/HomeScreen/SignInScreen.dart';
+import 'package:urban_shade/HomeScreen/SignUpScreen.dart';
+import 'package:urban_shade/HomeScreen/WelcomeScreen.dart';
 import 'package:urban_shade/SplashScreen/SplashScreen.dart';
 
 Future<void> main() async {
@@ -29,7 +31,9 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(),
       routes: {
         SplashScreen.routeName: (ctx) => SplashScreen(),
-        HomeScreen.routeName: (ctx) => HomeScreen(),
+        WelcomeScreen.routeName: (ctx) => WelcomeScreen(),
+        SignInScreen.routeName: (ctx) => SignInScreen(),
+        SignUpScreen.routeName: (ctx) => SignUpScreen(),
       },
     );
   }

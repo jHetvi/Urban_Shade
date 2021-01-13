@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:urban_shade/Global/buttons.dart';
-import 'package:urban_shade/Global/colors.dart';
+import 'package:urban_shade/Global/Route/SlideRouteClass.dart';
+import 'package:urban_shade/Global/Widgets/buttons.dart';
+import 'package:urban_shade/Global/Variables/colors.dart';
+import 'package:urban_shade/HomeScreen/SignInScreen.dart';
+import 'package:urban_shade/HomeScreen/SignUpScreen.dart';
 
-class HomeScreen extends StatefulWidget {
-  static final String routeName = "/HomeScreen";
+class WelcomeScreen extends StatefulWidget {
+  static final String routeName = "/WelcomeScreen";
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen> {
   Size size;
 
   @override
@@ -18,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          new Container(
+          Container(
             child: Image.asset(
               'assets/images/bg.png',
               fit: BoxFit.fill,
@@ -28,18 +31,29 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           SafeArea(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-              child: new ListView(
+              alignment: Alignment.center,
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: ListView(
+                shrinkWrap: true,
                 children: <Widget>[
-                  new Image.asset(
+                  Image.asset(
                     'assets/logo/URBAN_shade1.png',
-                    height: MediaQuery.of(context).size.width / 4,
+                    height: (MediaQuery.of(context).orientation ==
+                            Orientation.portrait)
+                        ? MediaQuery.of(context).size.width * .25
+                        : MediaQuery.of(context).size.height * .20,
                   ),
                   SizedBox(
                     height: 30.0,
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 30.0),
+                    margin: EdgeInsets.symmetric(
+                      horizontal: (MediaQuery.of(context).orientation ==
+                              Orientation.portrait)
+                          ? 0
+                          : 90,
+                    ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(40.0),
                       color: cardColor(),
@@ -91,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         SizedBox(
                           height: 50.0,
                         ),
-                        CustomButton.lightBackground(
+                        SlideButton.lightBackground(
                             text: "Sign In",
                             textStyle: TextStyle(
                               fontFamily: 'BodoniModa',
@@ -102,13 +116,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                   : MediaQuery.of(context).size.height * .06,
                               fontWeight: FontWeight.bold,
                             ),
-                            width: size.width * .8,
-                            height: size.height * .09,
-                            onTap: null),
+                            textAlign: TextAlign.left,
+                            width: (MediaQuery.of(context).orientation ==
+                                    Orientation.portrait)
+                                ? MediaQuery.of(context).size.width * .8
+                                : MediaQuery.of(context).size.height * .9,
+                            height: (MediaQuery.of(context).orientation ==
+                                    Orientation.portrait)
+                                ? MediaQuery.of(context).size.height * .08
+                                : MediaQuery.of(context).size.height * .13,
+                            action: () {
+                              setState(() {
+                                Navigator.push(context,
+                                    SlideRightRoute(page: SignInScreen()));
+                              });
+                            }),
                         SizedBox(
                           height: 20.0,
                         ),
-                        CustomButton.darkBackground(
+                        SlideButton.darkBackground(
                             text: "Sign Up",
                             textStyle: TextStyle(
                               fontFamily: 'BodoniModa',
@@ -119,11 +145,26 @@ class _HomeScreenState extends State<HomeScreen> {
                                   : MediaQuery.of(context).size.height * .06,
                               fontWeight: FontWeight.bold,
                             ),
-                            width: size.width * .8,
-                            height: size.height * .09,
-                            onTap: null),
+                            textAlign: TextAlign.right,
+                            width: (MediaQuery.of(context).orientation ==
+                                    Orientation.portrait)
+                                ? MediaQuery.of(context).size.width * .8
+                                : MediaQuery.of(context).size.height * .9,
+                            height: (MediaQuery.of(context).orientation ==
+                                    Orientation.portrait)
+                                ? MediaQuery.of(context).size.height * .08
+                                : MediaQuery.of(context).size.height * .13,
+                            action: () {
+                              setState(() {
+                                Navigator.push(context,
+                                    SlideRightRoute(page: SignUpScreen()));
+                              });
+                            }),
                       ],
                     ),
+                  ),
+                  SizedBox(
+                    height: 30.0,
                   ),
                 ],
               ),

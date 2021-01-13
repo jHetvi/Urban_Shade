@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:urban_shade/HomeScreen/HomeScreen.dart';
+import 'package:urban_shade/HomeScreen/WelcomeScreen.dart';
 
 class SplashScreen extends StatefulWidget {
   static final String routeName = "/SplashScreen";
@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   void navigationPage() {
-    Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+    Navigator.of(context).pushReplacementNamed(WelcomeScreen.routeName);
   }
 
   @override

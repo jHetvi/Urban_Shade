@@ -6,3 +6,4 @@ Color lightColor() => Color(0xffd1af94);
 Color whiteColor() => Colors.white;
 Color blackColor() => Colors.black;
 Color cardColor() => Colors.black.withOpacity(0.6);
+Color facebookColor() => Color(0xFF3B5998);
